@@ -1,0 +1,6 @@
+domain: oam.dev
+layout:
+- go.kubebuilder.io/v3
+projectName: notifier
+repo: oam.dev/notifier
+version: "3"
