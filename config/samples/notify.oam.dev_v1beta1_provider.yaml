@@ -1,0 +1,7 @@
+apiVersion: notify.oam.dev.oam.dev/v1beta1
+kind: Provider
+metadata:
+  name: provider-sample
+spec:
+  # Add fields here
+  foo: bar
