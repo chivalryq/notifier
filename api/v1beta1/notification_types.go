@@ -20,54 +20,53 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+const LevelInfo SeverityLevel = "Info"
+const LevelError SeverityLevel = "Error"
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// ProviderSpec defines the desired state of Provider
-type ProviderSpec struct {
+// NotificationSpec defines the desired state of Notification
+type NotificationSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	Type string               `json:"type"`
-	Channel string            `json:"channel,omitempty"`
-	SecretRef *LocalReference `json:"secretRef"`
-
+	ProviderRef *LocalReference `json:"providerRef"`
+	EventSeverity *SeverityLevel `json:"eventSeverity"`
+	EventSources *EventSourceSpec `json:"eventSources"`
 }
 
-// ProviderStatus defines the observed state of Provider
-type ProviderStatus struct {
+// NotificationStatus defines the observed state of Notification
+type NotificationStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 }
 
-// LocalReference contains enough information to let you locate
-// the referenced Secret inside the same namespace
-type LocalReference struct {
-	// Name of the referent
-	// +required
+type SeverityLevel string
+type EventSourceSpec struct {
+	Kind string `json:"kind"`
 	Name string `json:"name"`
 }
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 
-// Provider is the Schema for the providers API
-type Provider struct {
+// Notification is the Schema for the notifications API
+type Notification struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   ProviderSpec   `json:"spec,omitempty"`
-	Status ProviderStatus `json:"status,omitempty"`
+	Spec   NotificationSpec   `json:"spec,omitempty"`
+	Status NotificationStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
 
-// ProviderList contains a list of Provider
-type ProviderList struct {
+// NotificationList contains a list of Notification
+type NotificationList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Provider `json:"items"`
+	Items           []Notification `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&Provider{}, &ProviderList{})
+	SchemeBuilder.Register(&Notification{}, &NotificationList{})
 }
