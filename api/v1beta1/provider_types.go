@@ -28,10 +28,9 @@ type ProviderSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	Type string               `json:"type"`
-	Channel string            `json:"channel,omitempty"`
+	Type      string          `json:"type"`
+	Channel   string          `json:"channel,omitempty"`
 	SecretRef *LocalReference `json:"secretRef"`
-
 }
 
 // ProviderStatus defines the observed state of Provider
@@ -47,6 +46,7 @@ type LocalReference struct {
 	// +required
 	Name string `json:"name"`
 }
+
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 

@@ -22,6 +22,7 @@ import (
 
 const LevelInfo SeverityLevel = "Info"
 const LevelError SeverityLevel = "Error"
+
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
@@ -30,9 +31,9 @@ type NotificationSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	ProviderRef *LocalReference `json:"providerRef"`
-	EventSeverity *SeverityLevel `json:"eventSeverity"`
-	EventSources *EventSourceSpec `json:"eventSources"`
+	ProviderRef   *LocalReference  `json:"providerRef"`
+	EventSeverity *SeverityLevel   `json:"eventSeverity"`
+	EventSources  *EventSourceSpec `json:"eventSources"`
 }
 
 // NotificationStatus defines the observed state of Notification
@@ -46,6 +47,7 @@ type EventSourceSpec struct {
 	Kind string `json:"kind"`
 	Name string `json:"name"`
 }
+
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 
