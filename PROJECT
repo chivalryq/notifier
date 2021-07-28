@@ -9,7 +9,7 @@ resources:
     namespaced: true
   controller: true
   domain: oam.dev
-  group: notify.oam.dev
+  group: notify
   kind: Provider
   path: oam.dev/notifier/api/v1beta1
   version: v1beta1
@@ -18,8 +18,17 @@ resources:
     namespaced: true
   controller: true
   domain: oam.dev
-  group: notify.oam.dev
+  group: notify
   kind: Notification
+  path: oam.dev/notifier/api/v1beta1
+  version: v1beta1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: oam.dev
+  group: notify
+  kind: Message
   path: oam.dev/notifier/api/v1beta1
   version: v1beta1
 version: "3"

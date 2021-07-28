@@ -17,58 +17,48 @@ limitations under the License.
 package v1beta1
 
 import (
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
-
-const LevelInfo SeverityLevel = "Info"
-const LevelError SeverityLevel = "Error"
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// NotificationSpec defines the desired state of Notification
-type NotificationSpec struct {
+// MessageSpec defines the desired state of Message
+type MessageSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	ProviderRef   *LocalReference    `json:"providerRef"`
-	EventSeverity *SeverityLevel     `json:"eventSeverity"`
-	EventSources  []*EventSourceSpec `json:"eventSources"`
+	SourceRef v1.ObjectReference `json:"sourceRef"`
 }
 
-// NotificationStatus defines the observed state of Notification
-type NotificationStatus struct {
+// MessageStatus defines the observed state of Message
+type MessageStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-}
-
-type SeverityLevel string
-type EventSourceSpec struct {
-	Kind string `json:"kind"`
-	Name string `json:"name"`
 }
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 
-// Notification is the Schema for the notifications API
-type Notification struct {
+// Message is the Schema for the messages API
+type Message struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   NotificationSpec   `json:"spec,omitempty"`
-	Status NotificationStatus `json:"status,omitempty"`
+	Spec   MessageSpec   `json:"spec,omitempty"`
+	Status MessageStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
 
-// NotificationList contains a list of Notification
-type NotificationList struct {
+// MessageList contains a list of Message
+type MessageList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Notification `json:"items"`
+	Items           []Message `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&Notification{}, &NotificationList{})
+	SchemeBuilder.Register(&Message{}, &MessageList{})
 }

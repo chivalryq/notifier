@@ -5,7 +5,7 @@ metadata:
   name: notification-viewer-role
 rules:
 - apiGroups:
-  - notify.oam.dev.oam.dev
+  - notify.oam.dev
   resources:
   - notifications
   verbs:
@@ -13,7 +13,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - notify.oam.dev.oam.dev
+  - notify.oam.dev
   resources:
   - notifications/status
   verbs:

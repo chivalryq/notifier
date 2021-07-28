@@ -1,13 +1,13 @@
-# permissions for end users to edit providers.
+# permissions for end users to edit messages.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: provider-editor-role
+  name: message-editor-role
 rules:
 - apiGroups:
   - notify.oam.dev
   resources:
-  - providers
+  - messages
   verbs:
   - create
   - delete
@@ -19,6 +19,6 @@ rules:
 - apiGroups:
   - notify.oam.dev
   resources:
-  - providers/status
+  - messages/status
   verbs:
   - get

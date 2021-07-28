@@ -1,7 +1,7 @@
 apiVersion: notify.oam.dev/v1beta1
-kind: Notification
+kind: Message
 metadata:
-  name: notification-sample
+  name: message-sample
 spec:
   # Add fields here
   foo: bar

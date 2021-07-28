@@ -1,0 +1,86 @@
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - messages
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - messages/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - messages/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - notifications
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - notifications/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - notifications/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - providers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - providers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - notify.oam.dev
+  resources:
+  - providers/status
+  verbs:
+  - get
+  - patch
+  - update
